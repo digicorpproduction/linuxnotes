@@ -1,0 +1,49 @@
+Linux sites
+
+clean databases using confluent
+https://docs.confluent.io/current/installation/installing_cp/rhel-centos.html
+
+rootkits and more for server
+https://bigstep.com/blog/five-essential-applications-to-install-on-a-fresh-centos-7-server
+
+Mysql install
+https://computingforgeeks.com/how-to-install-mysql-workbench-on-centos/
+
+Froxlor
+
+The Froxlor is a lightweight server management control panel which is developed by experienced Server Administrators to 
+simplify the effort of managing your hosting platform. This open source software offers multi-user account feature 
+including reseller accounts which can manage reseller resources and limit what the customers may use in the dedicated 
+customer panel. You can also manage domain names, FTP accounts, email accounts, support tickets and customers that are 
+associated with them. Please note that Froxlor does not come with preinstalled LEMP or LAMP stack. So you need to install the 
+LAMP or LEMP stack on your server before proceeding with Froxlor installation.
+
+https://www.interserver.net/tips/kb/how-to-install-froxlor-on-centos-7/
+
+Installation tips after fresh Centos setup
+https://www.tecmint.com/things-to-do-after-minimal-rhel-centos-7-installation/
+
+Commands*
+show ip address 
+ip addr show
+
+ping a web address
+ping -c4 google.com
+
+enable system on start up
+# ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target
+
+how to install kafka
+https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-centos-7
+
+gparted gui for disk partition interface
+https://serverfault.com/questions/156156/how-to-install-gparted-on-centos/281450
+
+how to create app.js file in node.js
+https://www.tecmint.com/create-first-nodejs-app-in-linux/
+
+how to use vi editor
+https://www.guru99.com/the-vi-editor.html
+
+system logs, including tail, cat, 
+https://www.linux.com/topic/desktop/viewing-linux-logs-command-line/#:~:text=Open%20up%20a%20terminal%20window,this%20directory%20(Figure%201).
