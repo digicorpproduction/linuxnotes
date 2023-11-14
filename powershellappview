@@ -1,0 +1,18 @@
+# Define certificate parameters
+$CommonName = "ms23456.digicorp.com"
+$Issuer = "Digicorp Certification Authority"
+$CertStoreLocation = "Cert:\LocalMachine\My"
+
+# Create a new self-signed certificate
+$certificate = New-SelfSignedCertificate -DnsName $CommonName -CertStoreLocation $CertStoreLocation -Issuer $Issuer -KeyUsage KeyEncipherment,DataEncipherment -KeyAlgorithm RSA -KeyLength 2048 -NotAfter (Get-Date).AddYears(5)
+
+# Display the thumbprint of the new certificate
+Write-Host "Certificate Thumbprint: $($certificate.Thumbprint)"
+
+# Export the certificate to a PFX file (optional)
+$PfxPassword = ConvertTo-SecureString -String "YourPasswordHere" -Force -AsPlainText
+$PfxFilePath = "C:\Path\To\Your\Certificate\ms23456.digicorp.com.pfx"
+Export-PfxCertificate -Cert $certificate -FilePath $PfxFilePath -Password $PfxPassword
+
+# Display a message indicating success
+Write-Host "Certificate created successfully."
