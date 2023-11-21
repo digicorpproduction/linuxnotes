@@ -1,0 +1,34 @@
+# Define the path to the certificate file
+$certificateFilePath = "C:\TEMP\certificate.cert"
+
+# Check if the certificate file exists
+if (Test-Path $certificateFilePath) {
+    # Import the certificate into the Windows certificate store
+    Import-Certificate -FilePath $certificateFilePath -CertStoreLocation Cert:\LocalMachine\My
+
+    # Get the thumbprint of the imported certificate
+    $certificateThumbprint = (Get-ChildItem -Path Cert:\LocalMachine\My | Where-Object { $_.Subject -like "*Your Certificate Subject*" }).Thumbprint
+
+    # Check if the certificate thumbprint was found
+    if ($certificateThumbprint -ne $null) {
+        # Install the certificate in IIS
+        $iisSslBinding = Get-WebBinding -Port 443 -Name "Default Web Site"
+        if ($iisSslBinding -eq $null) {
+            New-WebBinding -Name "Default Web Site" -Port 443 -Protocol https
+        }
+        
+        $iisSslBinding = Get-WebBinding -Port 443 -Name "Default Web Site"
+        
+        if ($iisSslBinding -ne $null) {
+            $cert = Get-Item -Path "Cert:\LocalMachine\My\$certificateThumbprint"
+            $iisSslBinding.AddSslCertificate($cert.GetCertHashString(), "My")
+            Write-Host "Certificate installed and bound to port 443 in IIS."
+        } else {
+            Write-Host "Failed to bind the certificate to port 443 in IIS."
+        }
+    } else {
+        Write-Host "Certificate thumbprint not found."
+    }
+} else {
+    Write-Host "Certificate file not found at $certificateFilePath."
+}
