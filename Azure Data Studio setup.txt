@@ -1,0 +1,73 @@
+Azure data studio
+
+download installer
+install
+
+download zip
+install
+
+go to docker.com
+install docker desktop
+
+during installation after restart
+download the WSL 2 linux kernel
+
+installer then clones the repository and opens PS automatically with script already prompted
+
+then a prompted script is provided to build the image
+
+run script prompted
+
+share image script prompted
+ then I can view through the last link, log in, and see what was placed on docker hub, including image layers, vulnerabilities, pull request setup, etc
+
+Azure Data Studio connections
+
+to connect ADS to SQL database you need:
+ip of server
+SQL sever communication port if not default 1433
+verify SQL is enabled on the server
+username and password credentials 
+
+windows authentication uses credentials from the OS
+windows to windows connection is easier
+
+more challenging if its linux, docker or mac OS
+required kereberos to be enabled 
+
+easiest is set up SQL on linux on docker 
+ip address, port, and credentials 
+
+could create a cloud based Azure SQL database
+connection details:
+
+run SQL server on docker 
+open cmd on OS with docker desktop already installed 
+
+docker run -e 'ACCEPT_EULA=Y' -e 'MSQL_SA_PASSWORD=COMPLEXPASSWORD' -p 1401:1433 --name sqlserver -d mcr.microsoft.com/mssql/server:2017-latest //here we assign ports, we send through port 1401, docker turns around and returns on port 1433, this port forward setup | listening ports should always be 1433
+//you can run it on the same ports, 1433:1433, however by assigning two different ports I can run mulitple docker SQL instances
+
+-latest gives us the most recent version with all bug fixes and security patches 
+ 
+you can run the code below to show info on the container
+
+docker ps
+ 
+
+you can run the code below to show all containers and ids
+
+docker ps -a  //simple troubleshoot is to run this command if you do not see a docker in the above command to ensure all container show
+
+commands to start and stop sql server 
+
+docker start sql server 
+
+docker stop sql server 
+
+for mac or linux,
+ipconfig getifaddr en0  //wired connections info about ip and port
+
+ipconfig getifaddr en1 //wireless connections info about ip and port
+
+connect to sql server instance 
+
