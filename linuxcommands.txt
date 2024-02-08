@@ -1,0 +1,11 @@
+kubectl get nodes -A
+shows cert x509 and expiration 
+
+cd ../
+
+appviewx.sh --license host + fetch
+get appviewx license and info on cert
+
+appviewx.sh --version | grep command
+
+linux commands to renew appviewx certificate
